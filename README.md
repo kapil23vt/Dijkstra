@@ -2,7 +2,7 @@
 Implementation of Dijkstra's Algorithm using BFS and Queue
 
 The input is to be entered as follows.
-For example, consider the network where (1) is directly connected to (2) and (3). (2) and (3) are directly connected. (2) and (3) are directly connected.
+For example, consider the network where (1) is directly connected to (2) and (3). (2) and (3) are directly connected. (2) and (4) are directly connected.
 
 Enter the number of queries. For example = 1
 
