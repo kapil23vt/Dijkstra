@@ -1,3 +1,5 @@
+// This code is for only unweighted graph scenarios
+
 #include <queue>
 #include <cstdio>
 #include <cstring>
@@ -51,16 +53,24 @@ int main() {
 		//Starting from BFS
 		while (!q.empty()) {
 			
-			int u = q.front(); q.pop();
-
+			//Taking elements from queue, all the adjacent nodes are taken in order
+			int u = q.front(); 
+			
+			//Removing the last element from queue
+			q.pop(); 
+		
+			//Going through all the adjacent nodes
 			for (int i = 0; i < adjacent[u].size(); i++) {
 				int v = adjacent[u][i];
+				
+				// IF node is not visited, distance updated
 				if (dis[v] == -1) {
 					dis[v] = dis[u] + 1;
 					q.push(v);
 				}
 			}
 		}
+		
         cout << "The minimum distace to the other nodes :" << endl;
 		for (int i = 0; i < nodes; i++) {
 			if (i == source) continue;
