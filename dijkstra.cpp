@@ -7,7 +7,11 @@ using namespace std;
 
 const int maxnodes = 10;
 int nodes, edges;
+
+// Each node will have 10 max adjacent nodes
 vector<int> adjacent[maxnodes];
+
+//dis[10] to store address of each node from source node
 int dis[maxnodes];
 int main() {
 	int queries;
@@ -21,6 +25,9 @@ int main() {
 			int startnode, endnode;
 			cin >> startnode >> endnode;
 			startnode--; endnode--;
+			
+			// adjacent[0] = [1,2,4], if node 0 is connected to nodes 1,2,4
+			// 0 connected to 4 and similarly 4 is connected to 0
 			adjacent[startnode].push_back(endnode);
 			adjacent[endnode].push_back(startnode);
 		}
@@ -28,11 +35,22 @@ int main() {
 		cout << "Enter the node from which the minimum distance to other nodes is to be found" << endl;
 		cin >> source;
 		source--;
+		
+		//Creating queue to store the visited nodes from source node
 		queue<int> q;
+		
+		//Starting from the source, BFS can be run from any node as source node
 		q.push(source);
+		
+		//Initial value from source node to each other node will be marked as -1
 		memset(dis, -1, sizeof(dis));
+		
+		//distance to itself will be marked as 0
 		dis[source] = 0;
+		
+		//Starting from BFS
 		while (!q.empty()) {
+			
 			int u = q.front(); q.pop();
 
 			for (int i = 0; i < adjacent[u].size(); i++) {
