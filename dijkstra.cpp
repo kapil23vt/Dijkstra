@@ -55,16 +55,16 @@ int main() {
 		//distance to itself will be marked as 0
 		dis[source] = 0;
 
-		//Starting from BFS
+		//Starting BFS
 		while (!q.empty()) {
 
-			//Taking elements from queue, all the adjacent nodes are taken in order
+			//BFS, starting with element at the front in queue
 			int u = q.front();
 
-			//Removing the last element from queue
+			//Need to consider next element in next iteration, so pop previous
 			q.pop();
 
-			//Going through all the adjacent nodes
+			//Go through each node in adjacency list
 			for (int i = 0; i < adjacent[u].size(); i++) {
 				int v = adjacent[u][i];
 
